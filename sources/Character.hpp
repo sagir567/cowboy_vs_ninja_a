@@ -7,7 +7,7 @@ using namespace std;
 
 namespace ariel{
 
-class Character: public Point
+    class Character:public Point
 {
 private:
     Point loc;
@@ -19,7 +19,7 @@ public:
     ~Character();
 
 
-
+    void setName(string);
     bool isAlive();//Returns true/false if the character is alive
     double distance(Character*);//Returns the distance between the characters
     void hit(int);//Subtracts the appropriate amount of hit points from the character
@@ -29,7 +29,7 @@ public:
 
     string print();
 
-    bool hasboolets();//Indicates whether there are any bullets left in the morning's gun
+    bool hasBullets();//Indicates whether there are any bullets left in the morning's gun
     
 
 };

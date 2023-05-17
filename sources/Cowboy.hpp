@@ -17,7 +17,7 @@ public:
     Cowboy(string, Point);
     ~Cowboy();
 
-    bool hasboolets();
+    bool hasBullets();
     void reload();
     void shoot(Character*); 
 

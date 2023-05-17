@@ -19,7 +19,7 @@ public:
     double distance(Point other);
     double getX()const; 
     double getY()const; 
-    static Point moveTowards(Point source,Point dest, double dist);
+    Point moveTowards(Point source,Point dest, double dist);
     void setX(double x);
     void setY(double y);
     void print();

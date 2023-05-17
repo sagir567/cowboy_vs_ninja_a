@@ -17,7 +17,10 @@ private:
     Character warriors[10];
     Character *leader[2];
 
+
 public:
+
+    int size;
     Team(Character*);
     ~Team();
     void add(Character*);

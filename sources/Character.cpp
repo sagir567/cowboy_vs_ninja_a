@@ -26,7 +26,7 @@ void Character:: hit(int hit){
 
 }
 string Character:: getName(){
-    return "matan";
+    return "sagi";
 }
 Point Character:: getLocation(){
     return Point(2.0,3.0);
@@ -34,9 +34,12 @@ Point Character:: getLocation(){
 
 
 string Character:: print(){
-    return "matan brimer";
+    return "jonney";
 }
 
-bool Character:: hasboolets(){
+bool Character:: hasBullets(){
     return true;
+}
+void Character::setName(std::string s) {
+    name =s;
 }

@@ -13,7 +13,7 @@ Cowboy::~Cowboy()
 {
 }
 
-    bool Cowboy:: hasboolets(){
+    bool Cowboy::hasBullets(){
         return true;
     }
     void Cowboy:: reload(){
