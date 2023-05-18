@@ -3,7 +3,10 @@
 #include "sources/Cowboy.hpp"
 #include "sources/OldNinja.hpp"
 #include "sources/Point.hpp"
-
+#include <cmath>
+#include "sources/Team2.hpp"
+#include "sources/Team_I.hpp"
+#include "sources/Team.hpp"
 #include "sources/TrainedNinja.hpp"
 #include "sources/YoungNinja.hpp"
 
@@ -20,10 +23,100 @@ TEST_CASE("Test 1: Cowboy Default Constructor") {
 
 }
 TEST_CASE("Test 2: YoungNinja Default Constructor") {
- YoungNinja n1 = new YoungNinja()
+ YoungNinja *n1 = new YoungNinja("sam", Point(5,5));
+    CHECK_NOTHROW( YoungNinja *temp = new YoungNinja("sam", Point(5,5)));
+    CHECK_EQ(n1->getLocation().getY(),5);
+    CHECK_EQ(n1->getLocation().getX(),5);
+    CHECK_EQ(n1->getName(),"sam");
+    CHECK_EQ(n1->getSpeed(),14);
+}
 
+TEST_CASE("Test 3: OldNinja Default Constructor") {
+    OldNinja *o1 = new OldNinja("bob", Point(7,7));
+    CHECK_NOTHROW( OldNinja *temp = new OldNinja("bob", Point(7,7)));
+    CHECK_EQ(o1->getLocation().getY(),7);
+    CHECK_EQ(o1->getLocation().getX(),7);
+    CHECK_EQ(o1->getName(),"bob");
+    CHECK_EQ(o1->getSpeed(),8);
+    CHECK(o1->isAlive());
+}
+
+TEST_CASE("Test 4: TrainedNinja Default Constructor") {
+    TrainedNinja *t1 = new TrainedNinja("mike", Point(10,10));
+    CHECK_NOTHROW( TrainedNinja *temp = new TrainedNinja("mike", Point(10,10)));
+    CHECK_EQ(t1->getLocation().getY(),10);
+    CHECK_EQ(t1->getLocation().getX(),10);
+    CHECK_EQ(t1->getName(),"mike");
+    CHECK_EQ(t1->getSpeed(),12);
+    CHECK(t1->isAlive());
+}
+TEST_SUITE("Test 5: Point moveTowards function") {
+    Point source(0,0);
+    Point dest(10,10);
+
+    TEST_CASE("Moving towards a reachable point"){
+        Point result = Point::moveTowards(source, dest, 20);
+        CHECK_EQ(result.getX(), 10);
+        CHECK_EQ(result.getY(), 10);
+    }
+
+TEST_CASE("Moving towards an unreachable point"){
+        Point result = Point::moveTowards(source, dest, 5);
+        // The result coordinates depend on how moveTowards function computes dx and dy.
+        // Assuming dx and dy are meant to be proportional to maxDist, we can compute
+        // expected coordinates based on triangle similarity:
+        double expectedX = 0 + (10-0) * 5 / std::sqrt((10-0)*(10-0) + (10-0)*(10-0));
+        double expectedY = 0 + (10-0) * 5 / std::sqrt((10-0)*(10-0) + (10-0)*(10-0));
+        CHECK_EQ(result.getX(), expectedX);
+        CHECK_EQ(result.getY(), expectedY);
+    }
+
+TEST_CASE("Moving towards a point at zero distance") {
+        Point result = Point::moveTowards(source, source, 5);
+        CHECK_EQ(result.getX(), 0);
+        CHECK_EQ(result.getY(), 0);
+    }
+}
+TEST_CASE("TEST: teams members checking")
+{
+    Team t_1(al);
+    t_1.add(new Cowboy("Hikari", Point(12,16)));
+    t_1.add(new Cowboy("hi", Point(31,12)));
+    Team t_2(noy);
+    t_2.add(new Cowboy ("y", Point(13, 17)));
+    while(t_1.stillAlive() > 0 && t_2.stillAlive() > 0)
+    {
+        t_1.attack(&t_2);
+        t_1.attack(&t_2);
+    }
+    CHECK_EQ(t_2.stillAlive(), 0);
+    CHECK_GT(t_1.stillAlive(), 0);
 
 }
+
+
+TEST_CASE("TEST: teams members checking")
+{
+    Cowboy *noy = new Cowboy("noy", Point(12, 11));
+    Cowboy *al = new Cowboy("al", Point(12, 11));
+    Team t_1(al);
+    t_1.add(new Cowboy("Hikari", Point(12,16)));
+    t_1.add(new Cowboy("hi", Point(31,12)));
+    Team t_2(noy);
+    t_2.add(new Cowboy ("y", Point(13, 17)));
+    while(t_1.stillAlive() > 0 && t_2.stillAlive() > 0)
+    {
+        t_1.attack(&t_2);
+        t_1.attack(&t_2);
+    }
+    CHECK_EQ(t_2.stillAlive(), 0);
+    CHECK_GT(t_1.stillAlive(), 0);
+
+}
+
+
+
+
 
 
 

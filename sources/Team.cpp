@@ -14,6 +14,7 @@ using namespace std;
      }
 
      void Team::add(Character *player) {
+
          // Add the player to the team
          // Implementation goes here
      }

@@ -24,7 +24,7 @@ namespace ariel {
 
         double getY() const;
 
-        Point moveTowards(Point source, Point dest, double dist);
+       static Point moveTowards(Point source, Point dest, double dist);
 
         void setX(double x);
 

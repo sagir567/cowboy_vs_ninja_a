@@ -43,7 +43,7 @@ void Point::setY(double y)
     this->y = y;
 }
 
- Point Point::moveTowards(Point source, Point dest, double maxDist)
+  Point Point::moveTowards(Point source, Point dest, double maxDist)
 {
     int dist;
     if((dist=source.distance(dest)) < maxDist){

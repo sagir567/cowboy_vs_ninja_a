@@ -6,7 +6,7 @@ using namespace std;
 
 
 
-     YoungNinja::YoungNinja( string name, Point pos):Ninja(12, name,100,pos) {
+     YoungNinja::YoungNinja( string name, Point pos):Ninja(14, name,100,pos) {
 
      };
 
