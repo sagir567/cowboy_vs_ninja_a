@@ -6,26 +6,36 @@
 #include "OldNinja.hpp"
 #include "TrainedNinja.hpp"
 #include "YoungNinja.hpp"
-#include "Team.hpp"
+#include "Team_I.hpp"
+#include <vector>
+
+#define MAX 10
 
 using namespace std;
 namespace ariel{
-    
 
-class Team2: public Team  //Cowboy,OldNinja,TrainedNinja,YoungNinja
-{
-private:
-    Character warriors[10];
-    Character *leader[2];
 
-public:
-    Team2(Character*);
-    ~Team2();
-    void add(Character*);
-    void attack(Team2*);
-    int stillAlive();
-    void print();
-};
+    class Team2: public Team_I  //Cowboy,OldNinja,TrainedNinja,YoungNinja
+    {
+    private:
+      vector<Character*> teammates;
+
+    public:
+
+
+        Team2(Character*);
+        ~Team2();
+        void add(Character* c) override;
+        void attack(Team_I* foe) override;
+        int stillAlive() override;
+        void print()override;
+//        ~Team2() override= default;
+//        Team2(const Team2&) = delete;
+//        Team2& operator=(const Team2&) = delete;
+//        Team2(Team2&&) = delete;
+//        Team2& operator=(Team2&&) = delete;
+    };
+
 
 
 

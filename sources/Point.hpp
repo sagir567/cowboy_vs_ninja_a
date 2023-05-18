@@ -4,28 +4,37 @@
 #include <iostream>
 #include <string>
 
- using namespace std;
+using namespace std;
 
-namespace ariel{
+namespace ariel {
 
-class Point{
+    class Point {
 
-private:
-    double x;
-    double y;
+    private:
+        double x;
+        double y;
 
-public:
-    Point(double x=0, double y=0);
-    double distance(Point other);
-    double getX()const; 
-    double getY()const; 
-    Point moveTowards(Point source,Point dest, double dist);
-    void setX(double x);
-    void setY(double y);
-    void print();
-    ~Point();
+    public:
+        Point(Point const &p);
+        Point(double x = 0, double y = 0);
 
-};
+        double distance(Point other);
+
+        double getX() const;
+
+        double getY() const;
+
+        Point moveTowards(Point source, Point dest, double dist);
+
+        void setX(double x);
+
+        void setY(double y);
+
+        void print();
+
+        ~Point();
+
+    };
 }
 
 #endif

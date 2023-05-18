@@ -2,20 +2,24 @@
 #include <iostream>
 
 using namespace std;
-using namespace ariel;
+ namespace ariel {
 
 
-OldNinja::OldNinja(string name, Point point)
-{
-}
+     OldNinja::OldNinja(string name,Point pos):Ninja(8,name,150,pos) {
+     };
 
-OldNinja::~OldNinja()
-{
-}
 
-void OldNinja:: move(Character* player){
+     OldNinja::~OldNinja() {
+     };
 
-}
-void OldNinja:: slash(Character* player){
-
-}
+//     void Ninja::move(Character *player) {
+//
+//     };
+//
+//     void Ninja::slash(Character* c) {
+//
+//     };
+//     int Ninja::getSpeed() {
+//         return Ninja::getSpeed();
+//     }
+ }

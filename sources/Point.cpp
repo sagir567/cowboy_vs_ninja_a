@@ -11,6 +11,8 @@ Point::Point(double x, double y): x(x), y(y) {
         throw invalid_argument("Point coordinates must be positive");
     }
 }
+Point::Point(Point const &p):x(p.getX()),y(p.getY()){};
+
 
 Point::~Point(){
 

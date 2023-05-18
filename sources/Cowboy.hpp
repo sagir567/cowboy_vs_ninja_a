@@ -10,17 +10,17 @@ namespace ariel{
 class Cowboy: public Character
 {
 private:
-    int amount_of_balls;//=6
-    Character character;
-    
+    int ammo;//=6
+
 public:
-    Cowboy(string, Point);
+    Cowboy(string name, Point pos);
     ~Cowboy();
 
-    bool hasBullets();
+    bool hasboolets();
     void reload();
-    void shoot(Character*); 
-
+    void shoot(Character* c);
+    string getName();
+    string print();
 };
 
 

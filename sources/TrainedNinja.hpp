@@ -1,30 +1,25 @@
-#ifndef TRAINEDNINJA_HPP
-#define TRAINEDNINJA_HPP
 #include <iostream>
-#include "Character.hpp"
+#include "Ninja.hpp"
+#pragma once
+
+
+#ifndef TRAINEDNINJA_HPP
+#define TRAINEDINJA_HPP
 
 using namespace std;
 
-namespace ariel{
+namespace ariel {
 
 
-class TrainedNinja: public Character
-{
-private:
-    int speed;
-    Character character;
-public:
-    TrainedNinja(string name, Point point);
-    ~TrainedNinja();
-    void move(Character*);
-    void slash(Character*); 
-};
+    class TrainedNinja : public Ninja {
 
+    public:
+        TrainedNinja(string name,Point pos);
 
+        ~TrainedNinja();
 
-
-
-
+        string print();
+    };
 
 
 }

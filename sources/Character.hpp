@@ -1,7 +1,8 @@
+#pragma once
+#include "Point.hpp"
+
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
-
-#include "Point.hpp"
 
 using namespace std;
 
@@ -10,12 +11,12 @@ namespace ariel{
     class Character:public Point
 {
 private:
-    Point loc;
-    int hit_points;
+    Point pos;
+    int HP;
     string name;
 
 public:
-    Character(/* args */);
+    Character(int HP, string name,Point pos);
     ~Character();
 
 

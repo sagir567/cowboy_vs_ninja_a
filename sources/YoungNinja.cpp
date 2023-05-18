@@ -2,19 +2,25 @@
 #include <iostream>
 
 using namespace std;
-using namespace ariel;
+ namespace ariel {
 
 
-YoungNinja::YoungNinja(string name, Point point)
-{
-}
 
-YoungNinja::~YoungNinja()
-{
-}
-void YoungNinja:: move(Character* player){
+     YoungNinja::YoungNinja( string name, Point pos):Ninja(12, name,100,pos) {
 
-}
-void YoungNinja:: slash(Character* player){
+     };
 
-}
+     YoungNinja::~YoungNinja() {
+     }
+
+//     void Ninja::move(Character *c) {
+//
+//     }
+//
+//     void Ninja::slash(Character *c) {
+//
+//     }
+
+//     int Ninja::getSpeed() {
+//     }
+ }

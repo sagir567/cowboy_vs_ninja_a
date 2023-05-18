@@ -1,37 +1,25 @@
+#include <iostream>
+#include "Ninja.hpp"
+
+
 #ifndef OLDNINJA_HPP
 #define OLDNINJA_HPP
-#include <iostream>
-#include "Character.hpp"
 
 using namespace std;
 
-namespace ariel{
+namespace ariel {
 
 
-class OldNinja: public Character
-{
-private:
-    int speed;
-    Character character;
-public:
-    OldNinja(string name, Point point);
-    ~OldNinja();
+    class OldNinja : public Ninja {
 
-    void move(Character*);
-    void slash(Character*);
+    public:
+        OldNinja(string name, Point pos);
 
+        ~OldNinja();
 
-};
-
-
-
-
-
-
+        string print();
+    };
 
 
 }
-
-
-
 #endif
