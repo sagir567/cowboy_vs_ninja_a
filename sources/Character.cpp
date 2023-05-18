@@ -12,8 +12,9 @@ using namespace std;
      }
 
 
+
      bool Character::isAlive() {
-         return true;
+         return HP>0;
      }
 
      double Character::distance(Character *player) {
@@ -21,7 +22,7 @@ using namespace std;
      }
 
      void Character::hit(int hit) {
-
+        HP -=hit;
      }
 
      string Character::getName() {
@@ -41,5 +42,8 @@ using namespace std;
 
      void Character::setName(std::string s) {
          name = s;
+     }
+     int Character::getHP() {
+         return HP;
      }
  }

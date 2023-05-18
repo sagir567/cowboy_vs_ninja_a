@@ -10,9 +10,15 @@ namespace ariel {
 
     Ninja::Ninja( int speed, string name,int hp, Point pos) :speed(speed), Character(hp, name, pos){};
 
-    void Ninja::slash(Character *enemy) {};
+    void Ninja::slash(Character *foe) {
+        // ninja cannot move farter then his speed each turn;
+        // if foe is less then one meter then dealt 40 damage, else no demage dealt
+    };
 
-    void Ninja::move(Character *enemy) {};
+    void Ninja::move(Character *foe) {
+        // should use Point move
+        pos = this->moveTowards(this->getLocation(), foe->getLocation(),speed);
+    };
 
 
     // printing

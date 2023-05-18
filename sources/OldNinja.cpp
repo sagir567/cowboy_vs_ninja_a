@@ -12,14 +12,5 @@ using namespace std;
      OldNinja::~OldNinja() {
      };
 
-//     void Ninja::move(Character *player) {
-//
-//     };
-//
-//     void Ninja::slash(Character* c) {
-//
-//     };
-//     int Ninja::getSpeed() {
-//         return Ninja::getSpeed();
-//     }
+
  }

@@ -10,7 +10,7 @@ namespace ariel{
 
     class Character:public Point
 {
-private:
+    protected:
     Point pos;
     int HP;
     string name;
@@ -26,6 +26,8 @@ public:
     void hit(int);//Subtracts the appropriate amount of hit points from the character
     string getName();//Returns the name of the character.
     Point getLocation();//Returns the position of the character
+    int getHP();// return HP amunt
+
 
 
     string print();

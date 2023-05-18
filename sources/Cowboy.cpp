@@ -14,11 +14,11 @@ using namespace std;
      }
 
      void Cowboy::reload() {
-
+        ammo =6;
      }
 
      void Cowboy::shoot(Character *) {
-
+    // if their ammo are not zero,  and cowboy is alive dealt 10 damage
      }
      string Cowboy::print(){
          return "Cowboy";
