@@ -18,19 +18,23 @@ namespace ariel{
 class Team: public virtual Team_I //Cowboy,OldNinja,TrainedNinja,YoungNinja
 {
 private:
+    Character *captain;
     vector<Cowboy*> cowboys;
     vector<Ninja*> ninjas;
-    int capacity;
+
 
 public:
 
-
+    int capacity=0;
     Team(Character*);
     ~Team();
     void add(Character* c) override;
     void attack(Team_I* foe) override;
     int stillAlive() override;
     void print() override;
+    Character* getCap() override;
+    Character* replaceCap()override;
+
 };
 
 

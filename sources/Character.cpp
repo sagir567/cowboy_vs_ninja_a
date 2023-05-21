@@ -17,12 +17,17 @@ using namespace std;
          return HP>0;
      }
 
+
+
+
      double Character::distance(Character *player) {
-         return 2.0;
+         return this->getLocation().distance(player->getLocation());
      }
 
      void Character::hit(int hit) {
         HP -=hit;
+
+
      }
 
      string Character::getName() {
@@ -30,12 +35,18 @@ using namespace std;
      }
 
      Point Character::getLocation() {
-         return pos;
+        Point p(pos);
+        return p;
      }
 
 
      string Character::print() {
-         return "jonney";
+         string s="";
+         (isAlive())?s.append("name:"+name):s.append("name: ("+name+")");
+         (isAlive())?s.append("\nHP:"+ to_string(HP)):"";
+         s.append("\nPosition:"+getLocation().toString());
+
+        return s;
      }
 
 

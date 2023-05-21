@@ -17,8 +17,19 @@ using namespace std;
         ammo =6;
      }
 
-     void Cowboy::shoot(Character *) {
+     void Cowboy::shoot(Character *c) {
     // if their ammo are not zero,  and cowboy is alive dealt 10 damage
+
+    if(!isAlive()) return;
+    if(!hasboolets()){
+        cout<< "reloading...\n";
+        reload();
+        return;
+    }
+    ammo--;
+    c->hit(10);
+
+
      }
      string Cowboy::print(){
          return "Cowboy";

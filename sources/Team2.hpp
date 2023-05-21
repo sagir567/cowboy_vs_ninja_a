@@ -29,6 +29,8 @@ namespace ariel{
         void attack(Team_I* foe) override;
         int stillAlive() override;
         void print()override;
+        Character* getCap() override;
+        Character* replaceCap()override;
 //        ~Team2() override= default;
 //        Team2(const Team2&) = delete;
 //        Team2& operator=(const Team2&) = delete;

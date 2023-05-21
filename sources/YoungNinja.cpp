@@ -13,14 +13,5 @@ using namespace std;
      YoungNinja::~YoungNinja() {
      }
 
-//     void Ninja::move(Character *c) {
-//
-//     }
-//
-//     void Ninja::slash(Character *c) {
-//
-//     }
 
-//     int Ninja::getSpeed() {
-//     }
  }

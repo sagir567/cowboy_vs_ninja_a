@@ -11,13 +11,20 @@ namespace ariel {
     Ninja::Ninja( int speed, string name,int hp, Point pos) :speed(speed), Character(hp, name, pos){};
 
     void Ninja::slash(Character *foe) {
+        if((Character::distance(foe))<=speed){
+            foe->hit(40);
+        }
+        else {cout<<"foe is to far!!!\n";}
+
         // ninja cannot move farter then his speed each turn;
-        // if foe is less then one meter then dealt 40 damage, else no demage dealt
+        // if foe is less than one meter then dealt 40 damage, else no damage dealt
     };
 
     void Ninja::move(Character *foe) {
         // should use Point move
-        pos = this->moveTowards(this->getLocation(), foe->getLocation(),speed);
+        pos = this->moveTowards(pos, foe->getLocation(),speed);
+        cout<< "new pos";
+        pos.print();
     };
 
 

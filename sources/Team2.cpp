@@ -16,6 +16,12 @@ using namespace std;
          this->teammates.push_back(player);
 
      }
+     Character* Team2::getCap() {
+         return nullptr;
+     }
+     Character* Team2::replaceCap(){
+         return nullptr;
+     }
 
      void Team2::attack(Team_I *foes) {
 

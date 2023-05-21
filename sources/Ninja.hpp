@@ -17,6 +17,7 @@ namespace ariel {
         // return dealt damage or -1 in case of failure
         void slash(Character* c);
 
+
         int getSpeed();
         string print();
 
