@@ -27,6 +27,7 @@ namespace ariel{
         virtual void add(Character* )=0;
         virtual  Character* getCap()=0;
         virtual  Character* replaceCap()=0;
+        virtual Character* findVictim(Character* c)=0;
 //        Team_I operator = (const Team_I) =default;
 //        Team_I (const Team_I&) =default;
 //        Team_I(Team_I&&)=default;

@@ -14,7 +14,8 @@ using namespace std;
 
 
      bool Character::isAlive() {
-         return HP>0;
+         if (HP>0 )return true;
+         return false;
      }
 
 
@@ -24,8 +25,12 @@ using namespace std;
          return this->getLocation().distance(player->getLocation());
      }
 
-     void Character::hit(int hit) {
-        HP -=hit;
+     void Character::hit(int dmg) {
+         if(dmg<0 ){
+             throw std::invalid_argument  ("ERROR: damage cannot be negative");
+             return;
+         }
+        HP -=dmg;
 
 
      }
@@ -55,6 +60,6 @@ using namespace std;
          name = s;
      }
      int Character::getHP() {
-         return HP;
+         return max(HP,0);
      }
  }

@@ -182,9 +182,12 @@ TEST_SUITE("Ninja move and slash function") {
     Character *c2 = new Character(100, "Jane", Point(20,20));
 
     TEST_CASE("Test 17: Ninja move towards a character") {
+        double res = 8.071068;
         n1->move(c1);
-        CHECK_EQ(n1->getLocation().getX(),  8.07107);
-        CHECK_EQ(n1->getLocation().getY(),  8.07107);
+        double epsilon = 0.00001; // Adjust the epsilon value as needed
+
+        CHECK(std::abs(n1->getLocation().getX() - res) < epsilon);
+        CHECK(std::abs(n1->getLocation().getY() - res) < epsilon);
     }
 
     TEST_CASE("Test 18: Foe within slash reach") {
@@ -248,21 +251,105 @@ TEST_CASE("Test 23: ninja hit check"){
     gimli -> slash(c1);
     CHECK_EQ(c1->getHP(),100);
 }
-TEST_CASE("Test 23: team add player"){
-
-    Cowboy *galadiriel = new Cowboy("galadiriel", Point(5,10));
-    YoungNinja *legolas =new YoungNinja("legolas",Point(0,10));
-    Team *elfs =  new Team(legolas);
-    CHECK(elfs->capacity ==1);
-    CHECK_NOTHROW(elfs->add(galadiriel));
-    CHECK(elfs->capacity ==2);
 
 
+TEST_SUITE("Test Team Class") {
+    TEST_CASE("Test Adding Characters") {
 
 
+        YoungNinja *n1 = new YoungNinja("Shinobi", Point(1, 1));
+        TrainedNinja *n2 = new TrainedNinja("Master", Point(2, 2));
+        OldNinja *n3 = new OldNinja("Sensei", Point(3, 3));
+        Team team(n1);
 
+        team.add(n2);
+        team.add(n3);
 
+        REQUIRE(team.stillAlive() == 3);
+    }
+
+    TEST_CASE("Test Getting Captain") {
+        YoungNinja *n1 = new YoungNinja("Shinobi", Point(1, 1));
+        Team team(n1);
+
+        REQUIRE(team.getCap() == n1);
+    }
+
+    TEST_CASE("Test Replacing Captain") {
+        YoungNinja *n1 = new YoungNinja("Shinobi", Point(1, 1));
+        TrainedNinja *n2 = new TrainedNinja("Master", Point(2, 2));
+
+        Team team(n1);
+        team.add(n2);
+
+        n1->hit(120); // YoungNinja is no longer alive
+
+        REQUIRE(team.getCap() == n2);
+    }
+
+    TEST_CASE("Test Attacking") {
+        YoungNinja *n1 = new YoungNinja("Shinobi", Point(1, 1));
+        YoungNinja *n2 = new YoungNinja("Kunoichi", Point(2, 2));
+        Cowboy *c1 = new Cowboy("John", Point(10, 10));
+
+        Team team1(n1);
+        Team team2(n2);
+
+        team2.add(c1);
+
+        team1.attack(&team2);
+        team1.attack(&team2);
+        team1.attack(&team2);
+        team1.attack(&team2);
+        CHECK(n2->getHP()== 0);
+        CHECK(team1.stillAlive() == 1);
+        REQUIRE(n2->isAlive() == false);
+        REQUIRE(team2.getCap() == c1);
+    }
+
+    TEST_CASE("Test Still Alive") {
+        YoungNinja *n1 = new YoungNinja("Shinobi", Point(1, 1));
+        YoungNinja *n2 = new YoungNinja("Kunoichi", Point(2, 2));
+        Cowboy *c1 = new Cowboy("John", Point(10, 10));
+
+        Team team(n1);
+        team.add(n2);
+        team.add(c1);
+
+        n2->hit(200); // YoungNinja2 is no longer alive
+
+        REQUIRE(team.stillAlive() == 2); // YoungNinja1 and Cowboy are still alive
+    }
+
+    TEST_CASE("Test Maximum Capacity") {
+        YoungNinja *n1 = new YoungNinja("Shinobi", Point(1, 1));
+        YoungNinja *n2 = new YoungNinja("Kunoichi", Point(2, 2));
+        YoungNinja *n3 = new YoungNinja("Ninjutsu", Point(3, 3));
+        YoungNinja *n4 = new YoungNinja("Stealth", Point(4, 4));
+        YoungNinja *n5 = new YoungNinja("Shadow", Point(5, 5));
+        YoungNinja *n6 = new YoungNinja("Assassin", Point(6, 6));
+        YoungNinja *n7 = new YoungNinja("Silent", Point(7, 7));
+        YoungNinja *n8 = new YoungNinja("Swift", Point(8, 8));
+        YoungNinja *n9 = new YoungNinja("Agile", Point(9, 9));
+        YoungNinja *n10 = new YoungNinja("Nimble", Point(10, 10));
+        YoungNinja *n11 = new YoungNinja("Quick", Point(11, 11));
+
+        Team team(n1);
+        team.add(n2);
+        team.add(n3);
+        team.add(n4);
+        team.add(n5);
+        team.add(n6);
+        team.add(n7);
+        team.add(n8);
+        team.add(n9);
+        team.add(n10);
+        CHECK(team.capacity ==10);
+
+        REQUIRE_THROWS_AS(team.add(n11), std::runtime_error);
+    }
 }
+
 //
 //auto create_yninja = [](double x = random_float(), double y = random_float()) {
 //    return new YoungNinja{"Bob", Point{x, y}};

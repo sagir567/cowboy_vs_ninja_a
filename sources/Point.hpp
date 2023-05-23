@@ -18,7 +18,7 @@ namespace ariel {
         Point(Point const &p);
         Point(double x = 0, double y = 0);
 
-        double distance(Point other);
+        double distance(Point dest);
 
         double getX() const;
 

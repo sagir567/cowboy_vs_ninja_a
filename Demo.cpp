@@ -13,23 +13,18 @@
 using namespace std;
 
 #include "sources/Team.hpp" //no need for other includes
+#include "sources/Team2.hpp"
 
 using namespace ariel;
 
 
-
 int main() {
-  Ninja *n =  new Ninja(10,"gloin",120, Point(0,0));
-    Cowboy *c = new Cowboy("dorin", Point(9,9));
-    Point s(1,1);
-    Point d(10,10);
-   Point::moveTowards(s,d,10);
-    s.move(d,10);
-
-//    Point a(32.3,44),b(1.3,3.5);
-//    assert(a.distance(b) == b.distance(a));
-//    Cowboy *tom = new Cowboy("Tom", a);
-//    OldNinja *sushi = new OldNinja("sushi", b);
+    Point a(32.3,44),b(1.3,3.5);
+    assert(a.distance(b) == b.distance(a));
+    Cowboy *tom = new Cowboy("Tom", a);
+    OldNinja *sushi = new OldNinja("sushi", b);
+    Team2 t2 (tom);
+    cout << t2.stillAlive();
 //    tom->shoot(sushi);
 //    cout << tom->print() <<endl;
 //
@@ -54,7 +49,7 @@ int main() {
 //
 //     if (team_A.stillAlive() > 0) cout << "winner is team_A" << endl;
 //     else cout << "winner is team_B" << endl;
-//
-//     return 0; // no memory issues. Team should free the memory of its members. both a and b teams are on the stack.
+
+     return 0; // no memory issues. Team should free the memory of its members. both a and b teams are on the stack. 
 
 }

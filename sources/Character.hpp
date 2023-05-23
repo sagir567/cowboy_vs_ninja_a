@@ -6,7 +6,7 @@
 
 
 using namespace std;
-enum status{member  , notMember  , captain} ;
+
 
 namespace ariel{
 
@@ -16,7 +16,8 @@ namespace ariel{
     Point pos;
     int HP;
     string name;
-    status job;
+    bool stat =false;
+
 
 
 
@@ -24,8 +25,11 @@ public:
     Character(int HP, string name,Point pos);
 //    ~Character();
     virtual ~Character();
-    void changeJob(status s){
-    job = s;
+    void setStat(bool s){
+         stat =s;
+    }
+    bool getStat(){
+        return stat;
     }
 
 

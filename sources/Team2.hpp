@@ -1,48 +1,36 @@
 #ifndef TEAM2_HPP
 #define TEAM2_HPP
 
-#include "Character.hpp"
-#include "Cowboy.hpp"
-#include "OldNinja.hpp"
-#include "TrainedNinja.hpp"
-#include "YoungNinja.hpp"
-#include "Team_I.hpp"
+#include "Team.hpp"
 #include <vector>
 
 #define MAX 10
 
 using namespace std;
-namespace ariel{
 
+namespace ariel {
 
-    class Team2: public Team_I  //Cowboy,OldNinja,TrainedNinja,YoungNinja
-    {
+    class Team2 : public Team {
     private:
-      vector<Character*> teammates;
+
+        Character* captain;
+        vector<Character*> teammates;
 
     public:
-
-
-        Team2(Character*);
-        ~Team2();
+         Team2( Character *player);
+        Team2(const Team &other1);
         void add(Character* c) override;
-        void attack(Team_I* foe) override;
+        ~Team2();
+        void attack(Team* foes) override;
         int stillAlive() override;
-        void print()override;
-        Character* getCap() override;
-        Character* replaceCap()override;
-//        ~Team2() override= default;
-//        Team2(const Team2&) = delete;
-//        Team2& operator=(const Team2&) = delete;
-//        Team2(Team2&&) = delete;
-//        Team2& operator=(Team2&&) = delete;
+        void print() override;
+        Character* replaceCap() override;
+        Character* findVictim(Character* captainFoes) override;
+
+
+
     };
 
-
-
-
-
-
-}
+} // namespace ariel
 
 #endif

@@ -11,10 +11,14 @@ namespace ariel {
     Ninja::Ninja( int speed, string name,int hp, Point pos) :speed(speed), Character(hp, name, pos){};
 
     void Ninja::slash(Character *foe) {
-        if((Character::distance(foe))<=speed){
+        if(foe == this) throw runtime_error ("ERROR: self harm will not be tolerated!!!!");
+        if(!isAlive())throw runtime_error ("ERROR: dead characters cannot attack");
+        if(!foe)throw runtime_error("ERROR : foe is null");
+        if(!(foe->isAlive()))throw runtime_error("ERROR : foe is dead");
+        if((Character::distance(foe))<=1){
             foe->hit(40);
         }
-        else {cout<<"foe is to far!!!\n";}
+//        else {  cout<< name << " couldn't attack " << foe->getName() << " enemy is too far "<< "\n\n";}
 
         // ninja cannot move farter then his speed each turn;
         // if foe is less than one meter then dealt 40 damage, else no damage dealt
@@ -23,8 +27,8 @@ namespace ariel {
     void Ninja::move(Character *foe) {
         // should use Point move
         pos = this->moveTowards(pos, foe->getLocation(),speed);
-        cout<< "new pos";
-        pos.print();
+//        cout<< name << " moved to --> " << pos.toString()<< "\n\n";
+
     };
 
 

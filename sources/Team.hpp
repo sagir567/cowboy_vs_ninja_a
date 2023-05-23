@@ -6,42 +6,42 @@
 #include "OldNinja.hpp"
 #include "TrainedNinja.hpp"
 #include "YoungNinja.hpp"
-#include "Team_I.hpp"
 #include <vector>
+#include <limits.h>
 
 #define MAX 10
 
 using namespace std;
-namespace ariel{
-    
+namespace ariel {
 
-class Team: public virtual Team_I //Cowboy,OldNinja,TrainedNinja,YoungNinja
-{
-private:
-    Character *captain;
-    vector<Cowboy*> cowboys;
-    vector<Ninja*> ninjas;
+    class Team {
+    private:
 
 
-public:
+        Character* captain;
+        vector<Character*> teammates;
 
-    int capacity=0;
-    Team(Character*);
-    ~Team();
-    void add(Character* c) override;
-    void attack(Team_I* foe) override;
-    int stillAlive() override;
-    void print() override;
-    Character* getCap() override;
-    Character* replaceCap()override;
+    public:
+        int capacity = 0;
 
-};
+        Team(Character*);
+        ~Team();
+        Team(const Team& other);
 
+        virtual void add(Character* c);
 
+        virtual void attack(Team* foe);
 
+        virtual int stillAlive();
 
+        virtual void print();
+       virtual Character* findVictim(Character *CapFoe);
 
+        virtual Character *replaceCap();
 
-}
+        virtual  Character *getCap();
+    };
+
+} // namespace ariel
 
 #endif

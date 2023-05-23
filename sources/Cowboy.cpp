@@ -14,20 +14,25 @@ using namespace std;
      }
 
      void Cowboy::reload() {
+         if(!isAlive())throw std::runtime_error ("ERROR:  Dead cowboy can not reload");
         ammo =6;
      }
 
-     void Cowboy::shoot(Character *c) {
-    // if their ammo are not zero,  and cowboy is alive dealt 10 damage
+     void Cowboy::shoot(Character *foe) {
+    // if their ammo is not zero, and cowboy is alive dealt 10 damage
+         if(foe == this) throw std::runtime_error("ERROR self damage");
+         if(!isAlive())throw runtime_error ("ERROR: dead characters cannot attack");
+         if(!foe)throw runtime_error("ERROR : foe is null");
+         if(!foe->isAlive())throw runtime_error("ERROR : foe is dead");
 
-    if(!isAlive()) return;
+
     if(!hasboolets()){
-        cout<< "reloading...\n";
+//        cout<< "reloading...\n";
         reload();
         return;
     }
     ammo--;
-    c->hit(10);
+    foe->hit(10);
 
 
      }
