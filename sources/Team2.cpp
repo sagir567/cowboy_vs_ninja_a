@@ -99,23 +99,8 @@ namespace ariel {
 
 
     Character* Team2::replaceCap() {
-        if (captain->isAlive())
-            return captain;
-
-        Character* newCap = nullptr;
-        double dist = numeric_limits<double>::max();
-
-        // Replace captain with the closest living teammate
-        for (Character* teammate : teammates) {
-            if (teammate->isAlive() && teammate->distance(captain) < dist) {
-                newCap = teammate;
-                dist = teammate->distance(captain);
-            }
-        }
-
-        return newCap;
+        return nullptr;
     }
-
 
     Character* Team2::findVictim(Character* captainFoes) {
         if (captainFoes == nullptr)
