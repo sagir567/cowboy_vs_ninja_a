@@ -7,8 +7,8 @@ using namespace std;
 namespace ariel {
 
     Team2::Team2(Character* player) : Team(player) {
-        teammates.push_back(player);
-        player->setStat(true);
+//        teammates.push_back(player);
+//        player->setStat(true);
     }
 
 

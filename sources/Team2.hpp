@@ -13,8 +13,6 @@ namespace ariel {
     class Team2 : public Team {
     private:
 
-        Character* captain;
-        vector<Character*> teammates;
 
     public:
          Team2( Character *player);

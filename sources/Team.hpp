@@ -15,7 +15,7 @@ using namespace std;
 namespace ariel {
 
     class Team {
-    private:
+    protected:
 
 
         Character* captain;
@@ -40,6 +40,8 @@ namespace ariel {
         virtual Character *replaceCap();
 
         virtual  Character *getCap();
+
+
     };
 
 } // namespace ariel
