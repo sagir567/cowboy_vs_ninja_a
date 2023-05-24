@@ -18,30 +18,39 @@ namespace ariel {
     protected:
 
 
-        Character* captain;
-        vector<Character*> teammates;
+        Character *captain;
+        vector<Character *> teammates;
 
     public:
         int capacity = 0;
 
-        Team(Character*);
+        Team(Character *);
+
         ~Team();
-        Team(const Team& other);
 
-        virtual void add(Character* c);
+        Team(Team &other);
 
-        virtual void attack(Team* foe);
+        vector<Character *> getTeam() { return teammates; }
+
+        virtual void add(Character *c);
+
+        virtual void attack(Team *foe);
 
         virtual int stillAlive();
 
         virtual void print();
-       virtual Character* findVictim(Character *CapFoe);
+
+        virtual Character *findVictim(Character *CapFoe);
 
         virtual Character *replaceCap();
 
-        virtual  Character *getCap();
+        virtual Character *getCap();
 
 
+        static Character *
+        closeToo(Character *c, vector<Character *> team); //return closet alive team member to the charecter;
+
+        void attackT(Character *player, Team *foe);
     };
 
 } // namespace ariel

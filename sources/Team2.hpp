@@ -15,16 +15,21 @@ namespace ariel {
 
 
     public:
-         Team2( Character *player);
-        Team2(const Team &other1);
-        void add(Character* c) override;
-        ~Team2();
-        void attack(Team* foes) override;
-        int stillAlive() override;
-        void print() override;
-        Character* replaceCap() override;
-        Character* findVictim(Character* captainFoes) override;
+        Team2(Character *player);
 
+        void add(Character *c) override;
+
+        ~Team2();
+
+        void attack(Team *foes) override;
+
+        int stillAlive() override;
+
+        void print() override;
+
+        Character *replaceCap() override;
+
+        Character *findVictim(Character *captainFoes) override;
 
 
     };
