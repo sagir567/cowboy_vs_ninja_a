@@ -40,17 +40,18 @@ namespace ariel {
 
         virtual void print();
 
-        virtual Character *findVictim(Character *CapFoe);
 
-        virtual Character *replaceCap();
 
-        virtual Character *getCap();
 
 
         static Character *
         closeToo(Character *c, vector<Character *> team); //return closet alive team member to the charecter;
 
         void attackT(Character *player, Team *foe);
+
+        void attackWithCowboys(Team *foe);
+
+        void attackWithNinjas(Team *foe);
     };
 
 } // namespace ariel

@@ -26,9 +26,9 @@ namespace ariel {
             player->setStat(true);
 
             if (auto *cowboy = dynamic_cast<Cowboy *>(player)) {
-//                 cout << cowboy->getName() << " joined the team!!!\n";
+//
             } else if (auto *ninja = dynamic_cast<Ninja *>(player)) {
-//                 cout << ninja->getName() << " joined the team!!!\n";
+//
             } else {
                 cout << "Invalid Character type: " << typeid(*player).name() << ", name: " << player->getName()
                      << "\n";
@@ -59,57 +59,46 @@ namespace ariel {
     }
 
 
-    Character *Team2::replaceCap() {
-        return nullptr;
-    }
 
 
-    Character *Team2::findVictim(Character *captainFoes) {
-        if (captainFoes == nullptr)
-            throw runtime_error("Error: foe captain is null\n");
-        else {
-            Character *victim = nullptr;
-            double dist = numeric_limits<double>::max();
 
-            // Find a victim among team members
-            for (Character *teammate: teammates) {
-                if (teammate->isAlive() && teammate->distance(captainFoes) < dist) {
-                    victim = teammate;
-                    dist = teammate->distance(captainFoes);
-                }
-            }
 
-            if (victim == nullptr) {
-                cout << "Victory!!\n";
-            }
-            return victim;
-        }
-    }
-
-    void Team2::attack(Team *foe) {
+    void Team2::attack(Team* foe) {
         if (foe == nullptr) {
             throw std::invalid_argument("Invalid argument pointer");
-
         }
-        if (foe->stillAlive() > 0) {
-            // Attack with Cowboys
-            for (auto chr = teammates.begin(); chr != teammates.end(); ++chr) {
-                if ((*chr)->isAlive() > 0) {
+        if (foe->stillAlive() <= 0) {
+            throw std::runtime_error("ERROR: cannot attack dead team");
+        }
 
-                    if (foe->stillAlive() > 0) {
-                        attackT(*chr, foe);
-                    } else {
-                        return;
+        for (auto chr = teammates.begin(); chr != teammates.end(); ++chr) {
+            if ((*chr)->isAlive()) {
+                if (foe->stillAlive() > 0) {
+                    Character* victim = closeToo(captain, foe->getTeam());
+                    if (captain->isAlive() <= 0) {
+                        this->captain = closeToo(captain, getTeam());
                     }
 
+                    if (Cowboy* cowboy = dynamic_cast<Cowboy*>(*chr)) {
+                        if (cowboy->hasboolets()) {
+                            cowboy->shoot(victim);
+                        } else {
+                            cowboy->reload();
+                        }
+                    } else if (Ninja* ninja = dynamic_cast<Ninja*>(*chr)) {
+                        if (ninja->distance(victim) < 1) {
+                            ninja->slash(victim);
+                        } else {
+                            ninja->move(victim);
+                        }
+                    }
+                } else {
+                    return;
                 }
-
             }
-
-        } else {
-            throw runtime_error("cannot attack dead team");
         }
     }
+
 
 
 } // namespace ariel

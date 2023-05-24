@@ -27,9 +27,9 @@ namespace ariel {
 
         void print() override;
 
-        Character *replaceCap() override;
 
-        Character *findVictim(Character *captainFoes) override;
+
+
 
 
     };
